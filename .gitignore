@@ -32,3 +32,4 @@ Icon
 
 # PHPStorm project files
 .idea
+/vendor/
