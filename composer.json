@@ -1,0 +1,20 @@
+{
+    "name": "pedronofuentes/t1000",
+    "description": "T1000 kata of Symfony Valencia",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pedro Nofuentes",
+            "email": "pedro.nofuentes@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": {
+            "T1000": "src/"
+        }
+    }
+}
