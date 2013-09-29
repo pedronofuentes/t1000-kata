@@ -38,7 +38,6 @@ class T1000Test extends \PHPUnit_Framework_TestCase {
 
     public function testAddNewTargetToT1000()
     {
-        $aTargetPosition = new \stdClass(array(1, 1));
         $targetPosition = new \stdClass();
         $routingPatternMock = m::mock('T1000\Tests\RoutingPattern\RoutingPatternMock');
         $routingPatternMock->shouldReceive('addNewTarget')
