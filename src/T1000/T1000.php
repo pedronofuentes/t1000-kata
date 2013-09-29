@@ -3,16 +3,24 @@
 
 namespace T1000;
 
+use T1000\RoutingPattern\RoutingPatternInterface;
+
 
 class T1000 {
 
     private $position;
     private $targets;
+    private $routingPattern;
 
     function __construct($position)
     {
         $this->position =  $position;
         $this->targets = array();
+    }
+
+    public function setRoutingPattern(RoutingPatternInterface $routingPattern)
+    {
+        $this->routingPattern = $routingPattern;
     }
 
     public function getPosition() {
@@ -21,7 +29,7 @@ class T1000 {
 
     public function newTarget($targetPosition)
     {
-        $this->targets[] = $targetPosition;
+        $this->routingPattern->addNewTarget($targetPosition);
     }
 
     public function lostTarget($targetPosition)
