@@ -18,6 +18,11 @@ class ChronologicalRoutingPattern {
         $this->targets[] = $targetPosition;
     }
 
+    public function getNextTarget()
+    {
+        return array_shift($this->targets);
+    }
+
     public function getTargets()
     {
         return $this->targets;
