@@ -24,8 +24,16 @@ class T1000 {
         $this->targets[] = $targetPosition;
     }
 
+    public function lostTarget($targetPosition)
+    {
+        $targetIndex = array_search($targetPosition, $this->targets);
+        if (false !== $targetIndex) {
+            unset($this->targets[$targetIndex]);
+        }
+    }
+
     public function getTargets()
     {
         return $this->targets;
     }
-} 
+}
