@@ -4,6 +4,7 @@ namespace T1000\Tests\EventDispatcher;
 
 
 use T1000\EventDispatcher\EventDispatcher;
+use \Mockery as m;
 
 class EventDispatcherTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,4 +35,18 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(in_array($aCallable, $events[$anEvent]));
     }
-} 
+
+    public function testItFiresListenersWhenAnEventIsTriggered()
+    {
+        $aCallable = m::mock();
+        $aFunction = 'aFunction';
+        $aCallable->shouldReceive($aFunction)
+            ->with()
+            ->once();
+
+        $anEvent = 'anEvent';
+        $this->eventListener->on($anEvent, array($aCallable, $aFunction));
+
+        $this->eventListener->trigger($anEvent);
+    }
+}
