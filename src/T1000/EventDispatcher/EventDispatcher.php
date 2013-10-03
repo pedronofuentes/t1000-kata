@@ -22,6 +22,13 @@ class EventDispatcher {
         $this->events[$event][] = $listener;
     }
 
+    public function trigger($event)
+    {
+        foreach ($this->events[$event] as $callable) {
+            call_user_func($callable);
+        }
+    }
+
     public function getEvents()
     {
         return $this->events;
