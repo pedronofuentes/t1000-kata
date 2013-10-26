@@ -7,13 +7,19 @@ class EventDispatcher {
 
     private $events;
 
+    function  __construct()
+    {
+        $this->events = array();
+    }
+
     public function attachEvent($event, $callback)
     {
-        $this->events = $callback;
+        $this->events[] = $callback;
     }
 
     public function trigger($event)
     {
-        call_user_func($this->events);
+        foreach ($this->events as $callback)
+        call_user_func($callback);
     }
 }
