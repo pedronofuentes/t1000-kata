@@ -34,4 +34,16 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->eventDispatcher->trigger('EVENT');
     }
+
+    public function testItCanHandleMultipleEvents()
+    {
+        $functionMock = $this->getMock('AClass', array('aFunction', 'anotherFunction'));
+        $functionMock->expects($this->exactly(2))->method('aFunction');
+
+        $this->eventDispatcher->attachEvent('AN_EVENT', array($functionMock, 'aFunction'));
+        $this->eventDispatcher->attachEvent('ANOTHER_EVENT', array($functionMock, 'aFunction'));
+
+        $this->eventDispatcher->trigger('AN_EVENT');
+        $this->eventDispatcher->trigger('ANOTHER_EVENT');
+    }
 }

@@ -14,12 +14,15 @@ class EventDispatcher {
 
     public function attachEvent($event, $callback)
     {
-        $this->events[] = $callback;
+        if (!isset($this->events[$event])) {
+            $this->events[$event] = array();
+        }
+        $this->events[$event][] = $callback;
     }
 
     public function trigger($event)
     {
-        foreach ($this->events as $callback)
+        foreach ($this->events[$event] as $callback)
         call_user_func($callback);
     }
 }
